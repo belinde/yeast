@@ -1,0 +1,50 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: url('yeast.png');
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: antiquewhite;
+    padding-right: 500px;
+}
+
+button {
+    background-color: burlywood;
+    padding: 0.3rem 0.5rem;
+    height: 2rem;
+}
+
+input {
+    height: 2rem;
+}
+
+.run-1 {
+    background-color: rgba(0, 0, 255, 0.2);
+    border-color: rgba(0, 0, 255, 0.5);
+    color: rgb(0, 0, 255);
+}
+.run-2 {
+    background-color: rgba(0, 200, 0, 0.2);
+    border-color: rgba(0, 200, 0, 0.6);
+    color: rgb(0, 150, 0);
+}
+.run-3 {
+    background-color: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.5);
+    color: rgb(200, 0, 0);
+}
+.run-4 {
+    background-color: rgba(200, 0, 255, 0.2);
+    border-color: rgba(200, 0, 255, 0.5);
+    color: rgb(200, 0, 255);
+}
+.run-5 {
+    background-color: rgba(255, 255, 0, 0.2);
+    border-color: rgba(255, 255, 0, 0.5);
+    color: rgb(180, 180, 0);
+}
+.run-6 {
+    background-color: rgba(0, 255, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.5);
+    color: rgb(0, 180, 180);
+}
