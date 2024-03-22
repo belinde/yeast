@@ -13,7 +13,7 @@ function App() {
             >
                 {Object.entries(knownRecipes).map(([slug, info]) => (
                     <option value={slug} key={slug}>
-                        {info.title}
+                        {info?.title}
                     </option>
                 ))}
             </select>

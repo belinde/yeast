@@ -1,15 +1,16 @@
 import { useCallback, useState } from 'react';
-import { RECIPES } from '../recipes';
+import { DEFAULT_RECIPE, RECIPES, RecipeSlug, isRecipeSlug } from '../recipes';
+import { Recipe } from '../types';
 
 export const useRecipe = () => {
-    const [slug, setSlug] = useState(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        () => localStorage.getItem('yeastRecipe') ?? Object.keys(RECIPES).pop()!
-    );
-    const [recipe, setRecipeLocal] = useState(RECIPES[slug]);
+    const [slug, setSlug] = useState<RecipeSlug>(() => {
+        const retrieved = localStorage.getItem('yeastRecipe');
+        return isRecipeSlug(retrieved) ? retrieved : DEFAULT_RECIPE;
+    });
+    const [recipe, setRecipeLocal] = useState<Recipe>(RECIPES[slug]);
 
     const setRecipe = useCallback((slug: string) => {
-        if (RECIPES[slug]) {
+        if (isRecipeSlug(slug)) {
             setSlug(slug);
             localStorage.setItem('yeastRecipe', slug);
             setRecipeLocal(RECIPES[slug]);
