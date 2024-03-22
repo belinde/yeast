@@ -29,7 +29,7 @@ export const RunConfig: FC<{
     className?: string;
 }> = (props) => {
     const [startTime, setStartTime] = useState(
-        () => props.value || dayjs().format('YYYY-MM-DDTHH:mm')
+        () => props.value ?? dayjs().format('YYYY-MM-DDTHH:mm')
     );
     return (
         <RunContainer className={props.className}>
@@ -37,9 +37,15 @@ export const RunConfig: FC<{
             <input
                 type="datetime-local"
                 value={startTime}
-                onChange={(evt) => setStartTime(evt.target.value)}
+                onChange={(evt) => {
+                    setStartTime(evt.target.value);
+                }}
             />
-            <button onClick={() => props.setter(startTime)}>
+            <button
+                onClick={() => {
+                    props.setter(startTime);
+                }}
+            >
                 Imposta impasto
             </button>
             {props.remover && <button onClick={props.remover}>&times;</button>}

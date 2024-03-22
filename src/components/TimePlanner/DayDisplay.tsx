@@ -19,7 +19,10 @@ export const DayDisplay: FC<{ day: string; jobs: Job[] }> = (props) => {
                 {props.jobs
                     .filter((j) => j.day === props.day)
                     .map((job) => (
-                        <JobDisplay key={`${job.run}-${job.start}`} job={job} />
+                        <JobDisplay
+                            key={`${job.run.toString()}-${job.start.toString()}`}
+                            job={job}
+                        />
                     ))}
             </div>
         </DayContainer>

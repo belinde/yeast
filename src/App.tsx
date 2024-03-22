@@ -6,7 +6,11 @@ function App() {
     const { slug, knownRecipes, recipe, setRecipe } = useRecipe();
     return (
         <>
-            <select onChange={(evt) => setRecipe(evt.target.value)}>
+            <select
+                onChange={(evt) => {
+                    setRecipe(evt.target.value);
+                }}
+            >
                 {Object.entries(knownRecipes).map(([slug, info]) => (
                     <option value={slug} key={slug}>
                         {info.title}

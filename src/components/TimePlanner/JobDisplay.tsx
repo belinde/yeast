@@ -6,8 +6,7 @@ import { Job } from './types';
 export const JobDisplay: FC<{ job: Job }> = (props) => {
     return (
         <div
-            key={`${props.job.run}-${props.job.start}`}
-            className={classNames('job', `run-${props.job.run}`, {
+            className={classNames('job', `run-${props.job.run.toString()}`, {
                 wait: props.job.isWait,
             })}
             style={{

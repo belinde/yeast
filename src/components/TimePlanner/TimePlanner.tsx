@@ -13,7 +13,8 @@ export const TimePlanner: FC<{ recipe: Recipe; slug: string }> = (props) => {
 
     useEffect(() => {
         const retrieved = localStorage.getItem(STORAGE_KEY);
-        setRunsLocal(retrieved ? JSON.parse(retrieved) || [] : []);
+        const parsed: unknown = retrieved ? JSON.parse(retrieved) : [];
+        setRunsLocal(Array.isArray(parsed) ? parsed : []);
     }, [STORAGE_KEY]);
 
     const setRuns = useCallback(
@@ -75,7 +76,7 @@ export const TimePlanner: FC<{ recipe: Recipe; slug: string }> = (props) => {
             <h1>{props.recipe.title}</h1>
             {runs.map((r, i) => (
                 <RunConfig
-                    key={`${i}-${r}`}
+                    key={`${i.toString()}-${r}`}
                     setter={(start) => {
                         const newRuns = [...runs];
                         newRuns[i] = start;
@@ -88,11 +89,15 @@ export const TimePlanner: FC<{ recipe: Recipe; slug: string }> = (props) => {
                     }}
                     value={r}
                     run={i + 1}
-                    className={`run-${i + 1}`}
+                    className={`run-${(i + 1).toString()}`}
                 />
             ))}
             {runs.length < 6 ? (
-                <RunConfig setter={(start) => setRuns([...runs, start])} />
+                <RunConfig
+                    setter={(start) => {
+                        setRuns([...runs, start]);
+                    }}
+                />
             ) : null}
 
             <DaysAligner>
